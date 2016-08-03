@@ -1,6 +1,6 @@
 package com.aries.network.common;
 /**
- * 公告枚举
+ * 公共枚举
  * ClassName &CommonType
  * @author 吴向会
  * @d2016年8月1日

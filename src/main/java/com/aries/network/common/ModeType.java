@@ -1,5 +1,10 @@
 package com.aries.network.common;
-
+/**
+ * 模式类型枚举
+ * ClassName &ModeType
+ * @author 吴向会
+ * @d2016年8月3日
+ */
 public class ModeType {
 	/**
 	 * 命令模式
