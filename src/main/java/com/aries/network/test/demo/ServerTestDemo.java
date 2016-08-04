@@ -6,7 +6,7 @@ import com.aries.network.connection.NettyConnection;
 import com.aries.network.server.NetServer;
 import com.aries.network.server.AbstractNetManagerInf;
 /**
- * 
+ * 服务器测试demo类，单列
  * ClassName &ServerTest
  * @author 吴向会
  * @d2016年8月1日

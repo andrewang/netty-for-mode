@@ -1,9 +1,5 @@
 package com.aries.network.codec;
-
-import com.aries.network.common.CommonType;
-
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 
 /**
  * 命令模式下的编码解码器
@@ -11,7 +7,7 @@ import io.netty.buffer.Unpooled;
  * @author 吴向会
  * @d2016年7月28日
  */
-public class CMDCodec {
+public class CodeData {
 	/**
 	 * 命令id
 	 */
@@ -21,7 +17,7 @@ public class CMDCodec {
 	 */
 	private byte[] data;
 	
-	public CMDCodec(int commandID,byte[] data){
+	public CodeData(int commandID,byte[] data){
 		this.commandID=commandID;
 		this.data=data;
 	}
@@ -40,14 +36,11 @@ public class CMDCodec {
 		return data;
 	}
 	/**
-	 * 转换为ByteBuf
+	 * 转换为ByteBuf,超过 ByteBufCodecUtil.getMaxDataLength()，返回null
 	 * @return
 	 */
 	public ByteBuf toByteBuf() {
-		ByteBuf in = Unpooled.buffer(CommonType.INT_BYTES_SIZE + data.length);
-		in.writeInt(30);
-		in.writeBytes(data);
-		return in;
+		return ByteBufCodecUtil.codeDataEncode(this);
 	}
 
 }

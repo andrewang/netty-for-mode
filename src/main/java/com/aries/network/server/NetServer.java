@@ -14,7 +14,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 import com.aries.network.common.ModeType;
 import com.aries.network.connection.ConnectionInfListener;
 import com.aries.network.connection.NetConnectionInf;
@@ -165,7 +165,7 @@ public class NetServer implements NetConnectionInf {
 		}
 	}
 	
-	public void receiveMessage(ChannelId channelId, CMDCodec codecData) {
+	public void receiveMessage(ChannelId channelId, CodeData codecData) {
 		ConnectionInfListener nConnection =connections.get(channelId);
 		if(nConnection!=null){
 			nConnection.onReceiveMessage(codecData);

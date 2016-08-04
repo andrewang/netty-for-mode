@@ -2,7 +2,7 @@ package com.aries.network.client;
 
 import io.netty.channel.ChannelHandlerContext;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 /**
  * 客户端管理器接口
  * ClassName &ClientManagerInterface
@@ -26,5 +26,5 @@ public abstract interface AbstractClientManagerInf {
 	 * 接收到消息,并分发到对应的
 	 * @param codecData
 	 */
-	abstract void receiveMessage(CMDCodec codecData);
+	abstract void receiveMessage(CodeData codecData);
 }

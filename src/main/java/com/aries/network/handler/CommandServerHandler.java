@@ -1,6 +1,7 @@
 package com.aries.network.handler;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.ByteBufCodecUtil;
+import com.aries.network.codec.CodeData;
 import com.aries.network.connection.NetConnectionInf;
 
 import io.netty.buffer.ByteBuf;
@@ -28,19 +29,14 @@ public class CommandServerHandler extends ChannelInboundHandlerAdapter   {
 	 */
 	@Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-		 ByteBuf in = (ByteBuf) msg;
-		    try {
-		    	if(in.isReadable()){
-		    		int code =in.readInt();
-		    		byte[] data =ByteBufUtil.getBytes(in, in.readerIndex(), in.readableBytes());
-		    		CMDCodec codecData = new CMDCodec(code, data);
-		    		if(abstractConnection!=null){
-		    			abstractConnection.receiveMessage(ctx.channel().id(),codecData);
-		    		}
-		    	}
-		    } finally {
-		        ReferenceCountUtil.release(msg);
-		    }
+	    try {
+	    	CodeData codecData = ByteBufCodecUtil.codeDataDecode((ByteBuf) msg);
+    		if(abstractConnection!=null){
+    			abstractConnection.receiveMessage(ctx.channel().id(),codecData);
+    		}
+	    } finally {
+	        ReferenceCountUtil.release(msg);
+	    }
 
 	}
 	/**
@@ -51,7 +47,7 @@ public class CommandServerHandler extends ChannelInboundHandlerAdapter   {
 		if(abstractConnection!=null){
 			abstractConnection.closeConNotify(ctx.channel().id());
 		}
-		System.out.println("exceptionCaught-----------------------------");
+		System.out.println("exceptionCaught Exception");
 		//cause.printStackTrace();
         ctx.close();
 	}
@@ -71,6 +67,5 @@ public class CommandServerHandler extends ChannelInboundHandlerAdapter   {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         super.channelInactive(ctx);
         abstractConnection.closeConNotify(ctx.channel().id());
-        System.out.println("channelInactive-----------------------------");
     }
 }

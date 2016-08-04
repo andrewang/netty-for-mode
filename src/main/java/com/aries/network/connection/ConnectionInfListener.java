@@ -1,6 +1,6 @@
 package com.aries.network.connection;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 /**
  * 连接监听器，用于监听接收消息，和连接状态
  * ClassName &ConnectionInfListener
@@ -12,7 +12,7 @@ public abstract interface ConnectionInfListener{
 	 * 接收到消息,并分发到对应的
 	 * @param codecData
 	 */
-	abstract void onReceiveMessage(CMDCodec codecData);
+	abstract void onReceiveMessage(CodeData codecData);
 	/**
 	 * 关闭连接
 	 * @return

@@ -1,6 +1,6 @@
 package com.aries.network.client;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 import com.aries.network.common.ModeType;
 import com.aries.network.connection.NetConnectionInf;
 import com.aries.network.handler.CommandServerHandler;
@@ -102,7 +102,7 @@ public class NettyClient implements NetConnectionInf {
 		clientManager.registerConNotify(connection);
 	}
 
-	public void receiveMessage(ChannelId channelId, CMDCodec codecData) {
+	public void receiveMessage(ChannelId channelId, CodeData codecData) {
 		clientManager.receiveMessage(codecData);
 	}
 }

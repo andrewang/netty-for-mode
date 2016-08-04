@@ -1,10 +1,10 @@
 package com.aries.network.test.demo;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 import com.aries.network.connection.ConnectionInfListener;
 import com.aries.network.connection.NettyConnection;
 /**
- * 该connection仅做参考,未封装的原因是，让服务器对连接相关的操作更灵活。
+ * 对服务器以客户端单个连接的监听.包括监听接收到的消息，和连接断开的通知
  * ClassName &ServerConnection
  * @author 吴向会
  * @d2016年8月1日
@@ -15,7 +15,7 @@ public class ServerConnectionListenerDome implements ConnectionInfListener {
 	public ServerConnectionListenerDome(NettyConnection nCon){
 		this.nCon=nCon;
 	}
-	public void onReceiveMessage(CMDCodec codecData) {
+	public void onReceiveMessage(CodeData codecData) {
 		System.out.println("接收到消息");
 		System.out.println("server_codeId: "+codecData.getCommandID());
 		System.out.println("server_data: "+new String( codecData.getData()));
@@ -26,7 +26,7 @@ public class ServerConnectionListenerDome implements ConnectionInfListener {
 			e.printStackTrace();
 		}
 		String datas =nCon.getRemoteIPAndPort()+"\t"+count+":\t服务器发送消息测试";
-		CMDCodec sendCodecData= new CMDCodec(22, datas.getBytes());
+		CodeData sendCodecData= new CodeData(22, datas.getBytes());
 		nCon.sendCommand(sendCodecData);
 	}
 	public void onCloseConnection() {

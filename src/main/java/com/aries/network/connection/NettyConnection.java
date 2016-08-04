@@ -1,6 +1,6 @@
 package com.aries.network.connection;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -14,7 +14,7 @@ public class NettyConnection implements ConnectionInf{
 	public NettyConnection(ChannelHandlerContext connection){
 		this.connection=connection;
 	}
-	public void sendCommand(CMDCodec codecData) {
+	public void sendCommand(CodeData codecData) {
 		connection.writeAndFlush(codecData.toByteBuf());
 	}
 	public String getRemoteIPAndPort(){

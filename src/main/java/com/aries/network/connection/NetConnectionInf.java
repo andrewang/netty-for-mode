@@ -3,7 +3,7 @@ package com.aries.network.connection;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
 
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 
 public abstract interface NetConnectionInf {
 	/**
@@ -22,5 +22,5 @@ public abstract interface NetConnectionInf {
 	 * 接收到消息,并分发到对应的
 	 * @param codecData
 	 */
-	abstract void receiveMessage(ChannelId channelId,CMDCodec codecData);
+	abstract void receiveMessage(ChannelId channelId,CodeData codecData);
 }

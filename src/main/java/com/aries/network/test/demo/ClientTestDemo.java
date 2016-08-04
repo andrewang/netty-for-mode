@@ -4,10 +4,10 @@ import io.netty.channel.ChannelHandlerContext;
 
 import com.aries.network.client.AbstractClientManagerInf;
 import com.aries.network.client.NettyClient;
-import com.aries.network.codec.CMDCodec;
+import com.aries.network.codec.CodeData;
 import com.aries.network.connection.NettyConnection;
 /**
- * 客户端测试类
+ * 客户端连接测试demo类
  * ClassName &ClientTest
  * @author 吴向会
  * @d2016年8月1日
@@ -39,7 +39,7 @@ public class ClientTestDemo implements AbstractClientManagerInf {
 						}
 						 if(ClientTestDemo.getInstance().nCon.getConnectionContext().channel().isActive()&&!isSend){
 								String datas =ClientTestDemo.getInstance().nCon.getRemoteIPAndPort()+"\t"+ClientTestDemo.getInstance().count+":\t客户端发送消息测试";
-								CMDCodec sendCodecData= new CMDCodec(22, datas.getBytes());
+								CodeData sendCodecData= new CodeData(22, datas.getBytes());
 								ClientTestDemo.getInstance().nCon.sendCommand(sendCodecData);
 								isSend=true;
 						 }
@@ -70,7 +70,7 @@ public class ClientTestDemo implements AbstractClientManagerInf {
 		
 	}
 
-	public void receiveMessage(CMDCodec codecData) {
+	public void receiveMessage(CodeData codecData) {
 		System.out.println("接收到消息");
 		System.out.println("client_codeId: "+codecData.getCommandID());
 		System.out.println("client_data: "+new String( codecData.getData()));
