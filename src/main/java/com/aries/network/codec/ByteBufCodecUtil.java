@@ -43,7 +43,7 @@ public class ByteBufCodecUtil {
 			return null;
 		}
 		ByteBuf in = Unpooled.buffer(bytesLength);
-		in.writeInt(30);
+		in.writeInt(codeData.getCommandID());
 		in.writeBytes(codeData.getData());
 		return in;
 	}
