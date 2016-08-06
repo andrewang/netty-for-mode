@@ -75,13 +75,13 @@ public class ClientTestDemo implements AbstractClientManagerInf {
 		System.out.println("client_codeId: "+codecData.getCommandID());
 		System.out.println("client_data: "+new String( codecData.getData()));
 		count++;
-		/*try {
+		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		String datas =nCon.getRemoteIPAndPort()+"\t"+count+":\t客户端发送消息测试";
-		CMDCodec sendCodecData= new CMDCodec(22, datas.getBytes());
-		nCon.sendCommand(sendCodecData);*/
+		CodeData sendCodecData= new CodeData(22, datas.getBytes());
+		nCon.sendCommand(sendCodecData);
 	}
 }

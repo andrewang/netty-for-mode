@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.aries.network</groupId>
-  <artifactId>netty-test</artifactId>
+  <artifactId>netty-for-mode</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>netty-test</name>
+  <name>netty-for-mode</name>
   <url>http://maven.apache.org</url>
 
   <properties>

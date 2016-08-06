@@ -5,7 +5,6 @@ import com.aries.network.codec.CodeData;
 import com.aries.network.connection.NetConnectionInf;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
